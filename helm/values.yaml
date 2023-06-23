@@ -4,13 +4,13 @@
 
 replicaCount: 1
 image:
-  registry: "ghcr.io"
-  repository: "gitgav/korchi265bot"
+  registry: ghcr.io
+  repository: gitgav/korchi265bot
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: "v1.0.2-4d21485"
-  os: "linux"
-  arch: "amd64"
+  os: linux
+  arch: amd64
 secret:
   name: "korchi265bot"
   env: "TELE_TOKEN"
