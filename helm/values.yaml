@@ -1,0 +1,33 @@
+# Default values for helm.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+image:
+  repository: gavcheg
+  name: korchi265bot
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: "v1.0.2"
+  arch: amd64
+
+secret:
+  name: "korchi265bot"
+  env: "TELE_TOKEN"
+  key: "token"
+
+securityContext:
+  privileged: true
+
+autoscaling:
+  enabled: ""
+
+serviceAccount:
+  create: false
+
+ingress:
+  enabled: false
+
+service:
+  type: NodePort
