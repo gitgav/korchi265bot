@@ -43,7 +43,7 @@ jobs:
 
     - uses: mikefarah/yq@master
       with:
-        cmd: yq -q '.image.tag=strenv(VERSION)' helm/values.yaml; 
+        cmd: yq -i '.image.tag=strenv(VERSION)' helm/values.yaml; 
 
     - run: |
         git config user.name Andrii Merezhko
