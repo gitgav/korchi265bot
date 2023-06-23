@@ -29,24 +29,24 @@ jobs:
           REGISTRY: ${{ github.actor }}
         run: make image push
 
-cd:
-  name: CD
-  needs: CI
-  runs-on: ubuntu-latest
+  cd:
+    name: CD
+    needs: CI
+    runs-on: ubuntu-latest
 
-  steps:
+    steps:
 
-  - uses: action/checkout
-    with:
-      fetch-depth: 0
-  - run: echo "VERSION=$(git describe --tags --abbrev=0)-$(git rev-parse --short HEAD)" >> $GITHUB_ENV
+    - uses: action/checkout
+      with:
+        fetch-depth: 0
+    - run: echo "VERSION=$(git describe --tags --abbrev=0)-$(git rev-parse --short HEAD)" >> $GITHUB_ENV
 
-  - uses: mikefarah/yq@master
-    with:
-      cmd: yq -q '.image.tag=strenv(VERSION)' helm/values.yaml; 
+    - uses: mikefarah/yq@master
+      with:
+        cmd: yq -q '.image.tag=strenv(VERSION)' helm/values.yaml; 
 
-  - run: |
-      git config user.name Andrii Merezhko
-      git config user.email i@gava.org.ua
-      git commit -am "update version $VERSION"
-      git push
+    - run: |
+        git config user.name Andrii Merezhko
+        git config user.email i@gava.org.ua
+        git commit -am "update version $VERSION"
+        git push
