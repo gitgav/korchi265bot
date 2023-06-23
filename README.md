@@ -13,3 +13,5 @@ Usage:
 Available Commands:  
   help      Shows help  
   start     Use it to start bot  
+
+Added a helm template and package.
